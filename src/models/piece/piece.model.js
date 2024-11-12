@@ -1,7 +1,7 @@
-import { Sequelize, DataTypes, or } from 'sequelize'
+import { DataTypes } from 'sequelize'
 
-const PieceModel = () => {
-  new Sequelize().define(
+const PieceModel = (sequelize) => {
+  sequelize.define(
     'Piece',
     {
       id: {
@@ -21,7 +21,7 @@ const PieceModel = () => {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-          model: 'Puzzle',
+          model: 'Puzzles',
           key: 'id',
         },
       },

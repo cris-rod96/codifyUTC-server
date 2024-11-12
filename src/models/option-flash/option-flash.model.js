@@ -21,7 +21,7 @@ const OptionFlashModel = (sequelize) => {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-          model: 'QuestionFlash',
+          model: 'QuestionFlashes',
           key: 'id',
         },
       },

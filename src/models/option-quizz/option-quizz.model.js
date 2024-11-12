@@ -21,7 +21,7 @@ const OptionQuizzModel = (sequelize) => {
         type: DataTypes.UUID,
         allowNull: false,
         references: {
-          model: 'QuestionQuizz',
+          model: 'QuestionQuizzs',
           key: 'id',
         },
       },
