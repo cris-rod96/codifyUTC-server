@@ -19,7 +19,7 @@ const ClassModel = (sequelize) => {
       },
 
       isDeleted: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
 

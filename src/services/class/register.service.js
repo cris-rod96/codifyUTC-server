@@ -1,4 +1,4 @@
-import { Course } from '../../database/index.database.js'
+import { Class, Course } from '../../database/index.database.js'
 
 const courseExists = async (CourseId) => {
   const course = await Course.findOne({

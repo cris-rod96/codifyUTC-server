@@ -53,4 +53,13 @@ const getByCourse = async (CourseId) => {
   return { code: 200, classes }
 }
 
-export { getAll, getByKey, getByCourse }
+const getDeletedClasses = async () => {
+  const classes = await Class.findAll({
+    where: {
+      isDeleted: true,
+    },
+  })
+
+  return { code: 200, classes }
+}
+export { getAll, getByKey, getDeletedClasses, getByCourse }
