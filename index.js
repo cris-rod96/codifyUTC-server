@@ -3,7 +3,7 @@ import { NODE_ENV, PORT } from './src/consts/index.consts.js'
 import { sequelize } from './src/database/index.database.js'
 
 sequelize
-  .sync({ logging: false, force: NODE_ENV === 'development' })
+  .sync({ logging: false, force: false })
   .then(() => {
     console.log(`Base de datos conectada en modo ${NODE_ENV} correctamente.`)
     server.listen(PORT, () => {
