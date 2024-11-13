@@ -1,15 +1,17 @@
 import { topicService } from '../../services/index.services.js'
 
-const deleteTopic = async (req, res) => {
+const updateTopic = async (req, res) => {
   try {
     const { id } = req.params
-    const { code, message } = await topicService.deleteTopic(id)
-    return req.status(code).json({ message })
+    const data = req.body
+    const { code, message } = await topicService.updateTopic(id, data)
+    return res.status(code).json({ message })
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json({
       message: 'Error interno. Verifique los datos e intente de nuevo.',
     })
   }
 }
 
-export default deleteTopic
+export default updateTopic

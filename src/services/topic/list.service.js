@@ -1,4 +1,4 @@
-import { Topic } from '../../database/index.database.js'
+import { Class, Topic } from '../../database/index.database.js'
 
 const classExits = async (id) => {
   return await Class.findOne({
