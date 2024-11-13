@@ -1,4 +1,4 @@
-import { Sequelize, DataTypes } from 'sequelize'
+import { DataTypes } from 'sequelize'
 
 const TopicModel = (sequelize) => {
   sequelize.define(
@@ -28,6 +28,15 @@ const TopicModel = (sequelize) => {
       created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
+      },
+
+      ClassId: {
+        type: DataTypes.UUID,
+        allowNull: false,
+        references: {
+          model: 'Classes',
+          key: 'id',
+        },
       },
     },
     {
