@@ -22,7 +22,7 @@ const getByKey = async (key, value) => {
   return classFound
     ? {
         code: 200,
-        class: classFound,
+        classFound,
       }
     : {
         code: 400,
