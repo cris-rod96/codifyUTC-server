@@ -11,6 +11,15 @@ const courseExists = async (CourseId) => {
   return course
 }
 
+const getAll = async () => {
+  const classes = await Class.findAll({
+    where: {
+      isDeleted: false,
+    },
+  })
+
+  return { code: 200, classes }
+}
 const getByKey = async (key, value) => {
   const classFound = await Class.findOne({
     where: {
@@ -44,4 +53,4 @@ const getByCourse = async (CourseId) => {
   return { code: 200, classes }
 }
 
-export { getByKey, getByCourse }
+export { getAll, getByKey, getByCourse }

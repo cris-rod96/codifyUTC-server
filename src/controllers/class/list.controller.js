@@ -1,5 +1,16 @@
 import { classService } from '../../services/index.services.js'
 
+const getAll = async (req, res) => {
+  try {
+    const { code, classes } = await classService.getAll()
+    return res.status(code).json({ classes })
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Error interno. Verifique los datos e intente de nuevo.',
+    })
+  }
+}
+
 const getByCourse = async (req, res) => {
   try {
     const { course_id } = req.params
@@ -27,4 +38,4 @@ const getByKey = async (req, res) => {
   }
 }
 
-export { getByCourse, getByKey }
+export { getAll, getByCourse, getByKey }
