@@ -1,6 +1,7 @@
 import activityService from './activity/index.service.js'
 import authService from './auth/index.service.js'
 import classService from './class/index.service.js'
+import courseStudentService from './course-student/index.service.js'
 import courseService from './course/index.service.js'
 import pieceService from './piece/index.service.js'
 import puzzleService from './puzzle/index.service.js'
@@ -17,6 +18,7 @@ export {
   activityService,
   authService,
   classService,
+  courseStudentService,
   courseService,
   outputBattleService,
   pieceService,
