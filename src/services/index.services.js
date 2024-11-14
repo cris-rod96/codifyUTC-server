@@ -10,6 +10,7 @@ import optionQuizzService from './option-quizz/index.service.js'
 import outputBattleService from './output-battle/index.service.js'
 import topicService from './topic/index.service.js'
 import userService from './user/index.service.js'
+import responseService from './response/index.service.js'
 import supportService from './support/index.service.js'
 import questionFlashService from './question-flash/index.service.js'
 import questionQuizzService from './question-quizz/index.service.js'
@@ -27,6 +28,7 @@ export {
   optionQuizzService,
   questionFlashService,
   questionQuizzService,
+  responseService,
   supportService,
   topicService,
   userService,
