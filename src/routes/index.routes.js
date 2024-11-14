@@ -10,6 +10,7 @@ import questionFlashRouter from './question-flash/index.route.js'
 import optionFlashRouter from './option-flash/index.route.js'
 import outputBattleRouter from './output-battle/index.route.js'
 import puzzleRouter from './puzzle/index.route.js'
+import pieceRouter from './piece/index.route.js'
 
 const rootRouter = Router()
 
@@ -20,6 +21,7 @@ rootRouter.use('/classes', classRouter)
 rootRouter.use('/option-flash', optionFlashRouter)
 rootRouter.use('/option-quizz', optionQuizzRouter)
 rootRouter.use('/output-battle', outputBattleRouter)
+rootRouter.use('/pieces', pieceRouter)
 rootRouter.use('/puzzles', puzzleRouter)
 rootRouter.use('/topics', topicRouter)
 rootRouter.use('/question-flash', questionFlashRouter)
