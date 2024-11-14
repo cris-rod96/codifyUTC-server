@@ -9,11 +9,13 @@ import outputBattleController from './output-battle/index.controller.js'
 import optionQuizzController from './option-quizz/index.controller.js'
 import questionFlashController from './question-flash/index.controller.js'
 import questionQuizzController from './question-quizz/index.controller.js'
+import puzzleController from './puzzle/index.controller.js'
 
 export {
   authController,
   classController,
   courseController,
+  puzzleController,
   optionFlashController,
   optionQuizzController,
   outputBattleController,
