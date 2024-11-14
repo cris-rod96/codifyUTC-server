@@ -1,11 +1,10 @@
+import deleteCourseStudent from './delete.controller.js'
 import {
   getCourseStudentRecord,
   getCoursesByStudent,
   getStudentsByCourse,
-} from './list.service.js'
-
-import registerCourseStudent from './register.service.js'
-import deleteCourseStudent from './delete.service.js'
+} from './list.controller.js'
+import registerCourseStudent from './register.controller.js'
 
 export default {
   getCourseStudentRecord,
