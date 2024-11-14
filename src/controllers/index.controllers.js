@@ -9,6 +9,7 @@ import optionFlashController from './option-flash/index.controller.js'
 import outputBattleController from './output-battle/index.controller.js'
 import optionQuizzController from './option-quizz/index.controller.js'
 import pieceController from './piece/index.controller.js'
+import responseController from './response/index.controller.js'
 import questionFlashController from './question-flash/index.controller.js'
 import questionQuizzController from './question-quizz/index.controller.js'
 import puzzleController from './puzzle/index.controller.js'
@@ -25,6 +26,7 @@ export {
   outputBattleController,
   questionFlashController,
   questionQuizzController,
+  responseController,
   supportController,
   topicController,
   userController,
