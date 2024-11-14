@@ -1,0 +1,14 @@
+import { supportService } from '../../services/index.services.js'
+
+const deleteSupport = async (req, res) => {
+  try {
+    const { code, message } = await supportService.deleteSupport(id)
+    return res.status(code).json({ message })
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Error interno. Verifique los datos e intente de nuevo.',
+    })
+  }
+}
+
+export default deleteSupport
