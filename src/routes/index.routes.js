@@ -13,6 +13,7 @@ import puzzleRouter from './puzzle/index.route.js'
 import pieceRouter from './piece/index.route.js'
 import courseStudentRouter from './course-student/index.route.js'
 import responseRouter from './response/index.route.js'
+import scoreRouter from './score/index.route.js'
 
 const rootRouter = Router()
 
@@ -30,4 +31,5 @@ rootRouter.use('/responses', responseRouter)
 rootRouter.use('/topics', topicRouter)
 rootRouter.use('/question-flash', questionFlashRouter)
 rootRouter.use('/question-quizz', questionQuizzRouter)
+rootRouter.use('/scores', scoreRouter)
 export default rootRouter

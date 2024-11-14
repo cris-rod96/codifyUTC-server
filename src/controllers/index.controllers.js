@@ -14,6 +14,8 @@ import questionFlashController from './question-flash/index.controller.js'
 import questionQuizzController from './question-quizz/index.controller.js'
 import puzzleController from './puzzle/index.controller.js'
 
+import scoreController from './score/index.controller.js'
+
 export {
   authController,
   classController,
@@ -29,5 +31,6 @@ export {
   responseController,
   supportController,
   topicController,
+  scoreController,
   userController,
 }
