@@ -11,12 +11,14 @@ import optionFlashRouter from './option-flash/index.route.js'
 import outputBattleRouter from './output-battle/index.route.js'
 import puzzleRouter from './puzzle/index.route.js'
 import pieceRouter from './piece/index.route.js'
+import courseStudentRouter from './course-student/index.route.js'
 
 const rootRouter = Router()
 
 rootRouter.use('/auth', authRouter)
 rootRouter.use('/users', userRouter)
 rootRouter.use('/courses', courseRouter)
+rootRouter.use('/course-student', courseStudentRouter)
 rootRouter.use('/classes', classRouter)
 rootRouter.use('/option-flash', optionFlashRouter)
 rootRouter.use('/option-quizz', optionQuizzRouter)
