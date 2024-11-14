@@ -2,6 +2,7 @@ import activityService from './activity/index.service.js'
 import authService from './auth/index.service.js'
 import classService from './class/index.service.js'
 import courseService from './course/index.service.js'
+import pieceService from './piece/index.service.js'
 import puzzleService from './puzzle/index.service.js'
 import optionFlashService from './option-flash/index.service.js'
 import optionQuizzService from './option-quizz/index.service.js'
@@ -18,6 +19,7 @@ export {
   classService,
   courseService,
   outputBattleService,
+  pieceService,
   puzzleService,
   optionFlashService,
   optionQuizzService,
