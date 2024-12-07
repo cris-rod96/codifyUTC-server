@@ -15,11 +15,14 @@ import scoreService from './score/index.service.js'
 import supportService from './support/index.service.js'
 import questionFlashService from './question-flash/index.service.js'
 import questionQuizzService from './question-quizz/index.service.js'
+import codeService from './code/index.service.js'
+import recoveryService from './recovery/index.service.js'
 
 export {
   activityService,
   authService,
   classService,
+  codeService,
   courseStudentService,
   courseService,
   outputBattleService,
@@ -34,4 +37,5 @@ export {
   supportService,
   topicService,
   userService,
+  recoveryService,
 }

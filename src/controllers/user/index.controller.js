@@ -5,9 +5,10 @@ import {
   getUsersByActive,
   getUsersByRole,
   getUsersDeleted,
+  verfyUser,
 } from './list.controller.js'
 import registerUser from './register.controller.js'
-import updateUser from './update.controller.js'
+import { updateUser, changePassword } from './update.controller.js'
 
 export default {
   deleteUser,
@@ -18,4 +19,6 @@ export default {
   getUsersDeleted,
   registerUser,
   updateUser,
+  verfyUser,
+  changePassword,
 }

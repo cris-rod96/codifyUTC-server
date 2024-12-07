@@ -34,14 +34,7 @@ const CourseModel = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      period: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      parallel: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+
       section: {
         type: DataTypes.ENUM,
         allowNull: false,
@@ -64,6 +57,10 @@ const CourseModel = (sequelize) => {
           model: 'Users',
           key: 'id',
         },
+      },
+      access_code: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {

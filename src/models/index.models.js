@@ -14,12 +14,14 @@ import OptionFlashModel from './option-flash/option-flash.model.js'
 import ResponseModel from './response/response.model.js'
 import ScoreModel from './score/score.model.js'
 import SupportModel from './support/support.model.js'
+import CodeModel from './code/code.model.js'
 
 export const models = [
   ActivityModel,
   ClassModel,
   CourseModel,
   CourseStudentModel,
+  CodeModel,
   TopicModel,
   UserModel,
   QuestionQuizzModel,

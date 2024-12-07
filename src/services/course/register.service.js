@@ -1,6 +1,7 @@
 import { Course, User } from '../../database/index.database.js'
 
 const existTeacher = async (TeacherId) => {
+  console.log(TeacherId)
   const teacher = await User.findOne({
     where: {
       id: TeacherId,
@@ -15,6 +16,8 @@ const existTeacher = async (TeacherId) => {
 
 const registerCourse = async (data) => {
   const { TeacherId } = data
+
+  console.log(data)
 
   if (!existTeacher(TeacherId))
     return { code: 400, message: 'Docente no disponible. Intente de nuevo.' }

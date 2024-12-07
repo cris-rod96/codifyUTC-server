@@ -1,14 +1,33 @@
 import { v2 as cloudinary } from 'cloudinary'
+import stream from 'stream'
 
-cloudinary.config({
-  cl,
-})
+const uploadImage = async (folder, fileBuffer, fileName) => {
+  // Creamos un stream de lectura a partir del buffer
+  const bufferStream = new stream.PassThrough()
+  bufferStream.end(fileBuffer) // Pasamos el buffer al stream
 
-const uploadImage = async (folder, file) => {
-  const { secure_url } = await cloudinary.uploader.upload(file, {
-    folder: `codeverse/${folder}`,
+  return new Promise((resolve, reject) => {
+    // Usamos el método upload_stream de Cloudinary
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: `codeverse/${folder}`,
+        overwrite: true,
+        public_id: fileName,
+      },
+      (error, result) => {
+        if (error) {
+          reject(
+            new Error('Error uploading image to Cloudinary: ' + error.message)
+          )
+        } else {
+          resolve(result.secure_url)
+        }
+      }
+    )
+
+    // Pasamos el stream al uploader de Cloudinary
+    bufferStream.pipe(uploadStream)
   })
-  return secure_url
 }
 
 export default { uploadImage }

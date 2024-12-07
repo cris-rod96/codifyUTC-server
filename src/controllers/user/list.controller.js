@@ -54,10 +54,23 @@ const getUsersDeleted = async (req, res) => {
   }
 }
 
+const verfyUser = async (req, res) => {
+  try {
+    const { email, nick_name } = req.query
+    const { code, exist } = await userService.verfyUser(email, nick_name)
+    return res.status(code).json({ exist })
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error interno. Verifique los datos e intente de nuevo.`,
+    })
+  }
+}
+
 export {
   getAllUsers,
   getUserByKey,
   getUsersByActive,
   getUsersByRole,
   getUsersDeleted,
+  verfyUser,
 }

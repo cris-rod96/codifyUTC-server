@@ -52,4 +52,22 @@ const updateUser = async (id, data) => {
       }
 }
 
-export default updateUser
+const changePassword = async (data) => {
+  const { method, value, password } = data
+  const user = await User.findOne({
+    where: {
+      [method === 'Email' ? 'email' : 'phone']: value,
+      isActive: true,
+      isDeleted: false,
+    },
+  })
+
+  if (!user) return { code: 400, message: 'El usuario no existe.' }
+
+  user.password = password
+  await user.save()
+
+  return { code: 200, message: 'Contraseña cambiada con éxito.' }
+}
+
+export { updateUser, changePassword }

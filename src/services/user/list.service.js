@@ -1,3 +1,4 @@
+import { Op } from 'sequelize'
 import { User } from '../../database/index.database.js'
 
 const getAllUsers = async () => {
@@ -53,10 +54,20 @@ const getUserByKey = async (key, value) => {
     : { code: 400, message: 'Usuario no encontrado.' }
 }
 
+const verfyUser = async (email, nick_name) => {
+  const user = await User.findOne({
+    where: {
+      [Op.or]: [{ email, nick_name }],
+    },
+  })
+  return user ? { code: 400, exist: true } : { code: 200, exist: false }
+}
+
 export {
   getAllUsers,
   getUserByKey,
   getUsersByActive,
   getUsersByRole,
   getUsersDeleted,
+  verfyUser,
 }

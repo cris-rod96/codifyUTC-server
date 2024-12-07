@@ -10,6 +10,8 @@ const userExists = async (key, value) => {
 }
 
 const registerUser = async (data) => {
+
+  
   const { dni, email, phone, nick_name } = data
 
   const checks = await Promise.all([
@@ -31,6 +33,7 @@ const registerUser = async (data) => {
     ? {
         code: 201,
         message: 'Usuario registrado con éxito.',
+        user,
       }
     : {
         code: 400,

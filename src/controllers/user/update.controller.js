@@ -19,4 +19,22 @@ const updateUser = async (req, res) => {
   }
 }
 
-export default updateUser
+const changePassword = async (req, res) => {
+  try {
+    const { password, ...data } = req.body
+    const passwordHashed = await bcryptUtl.hashPassword(password)
+    const { code, message } = await userService.changePassword({
+      ...data,
+      password: passwordHashed,
+    })
+
+    return res.status(code).json({ message })
+  } catch (error) {
+    console.log(error.message)
+    return res.status(500).json({
+      message: `Error interno en el servidor. Verifique los datos e intente de nuevo`,
+    })
+  }
+}
+
+export { updateUser, changePassword }

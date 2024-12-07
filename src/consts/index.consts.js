@@ -7,4 +7,9 @@ export const {
   DB_PROD,
   SECRET_WORD,
   CLOUDINARY_URL,
+  GMAIL_DIR,
+  GMAIL_PASSWORD,
+  TWILIO_NUM,
+  TWILIO_SID,
+  TWILIO_AUTH_TOKEN,
 } = process.env

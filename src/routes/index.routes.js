@@ -14,11 +14,13 @@ import pieceRouter from './piece/index.route.js'
 import courseStudentRouter from './course-student/index.route.js'
 import responseRouter from './response/index.route.js'
 import scoreRouter from './score/index.route.js'
-
+import codeRouter from './code/index.route.js'
+import recoveryRouter from './recovery/index.route.js'
 const rootRouter = Router()
 
 rootRouter.use('/auth', authRouter)
 rootRouter.use('/users', userRouter)
+rootRouter.use('/codes', codeRouter)
 rootRouter.use('/courses', courseRouter)
 rootRouter.use('/course-student', courseStudentRouter)
 rootRouter.use('/classes', classRouter)
@@ -32,4 +34,5 @@ rootRouter.use('/topics', topicRouter)
 rootRouter.use('/question-flash', questionFlashRouter)
 rootRouter.use('/question-quizz', questionQuizzRouter)
 rootRouter.use('/scores', scoreRouter)
+rootRouter.use('/recover', recoveryRouter)
 export default rootRouter

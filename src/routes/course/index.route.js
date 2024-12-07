@@ -1,9 +1,14 @@
 import { Router } from 'express'
 import { courseController } from '../../controllers/index.controllers.js'
+import { multerHelper } from '../../helpers/index.helpers.js'
 
 const courseRouter = Router()
 
-courseRouter.post('/', courseController.registerCourse)
+courseRouter.post(
+  '/',
+  multerHelper.upload.single('poster'),
+  courseController.registerCourse
+)
 courseRouter.get('/all', courseController.getAllCourses)
 courseRouter.get('/deleted', courseController.getAllDeletedCourses)
 courseRouter.get('/teacher/:teacher_id', courseController.getByTeacher)

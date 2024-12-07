@@ -23,6 +23,7 @@ const {
   Support,
   Topic,
   User,
+  Code,
 } = sequelize.models
 
 User.hasMany(Course, { foreignKey: 'TeacherId' })
@@ -95,4 +96,5 @@ export {
   Support,
   Topic,
   User,
+  Code,
 }

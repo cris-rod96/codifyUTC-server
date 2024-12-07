@@ -1,4 +1,4 @@
-import { User } from '../../database/index.database.js'
+import { Course, User } from '../../database/index.database.js'
 import { bcryptUtl, jwtUtl } from '../../utils/index.utils.js'
 const formatUserResponse = (user) => ({
   id: user.id,
@@ -9,6 +9,7 @@ const formatUserResponse = (user) => ({
   profile_picture: user.profile_picture,
   dni: user.dni,
   phone: user.phone,
+  courses: user.Courses,
 })
 
 const login = async (email, password) => {
@@ -17,6 +18,7 @@ const login = async (email, password) => {
       email,
       isDeleted: false,
     },
+    include: [Course],
   })
 
   if (!user)

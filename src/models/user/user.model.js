@@ -38,7 +38,7 @@ const UserModel = (sequelize) => {
         allowNull: false,
         unique: true,
         validate: {
-          len: [10, 13],
+          len: [9, 12],
         },
       },
 
@@ -54,16 +54,22 @@ const UserModel = (sequelize) => {
 
       profile_picture: {
         type: DataTypes.STRING,
+        // allowNull: false,
+        // validate: {
+        //   isUrl: true,
+        // },
+      },
+
+      gender: {
+        type: DataTypes.ENUM,
+        values: ['Masculino', 'Femenino', 'Otro'],
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
       },
 
       role: {
         type: DataTypes.ENUM,
         values: ['Administrador', 'Docente', 'Estudiante'],
-        allowNull: false,
+        defaultValue: 'Estudiante',
       },
 
       isActive: {
@@ -73,7 +79,7 @@ const UserModel = (sequelize) => {
 
       isDeleted: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        defaultValue: false,
       },
 
       created_at: {

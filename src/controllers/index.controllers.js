@@ -13,14 +13,16 @@ import responseController from './response/index.controller.js'
 import questionFlashController from './question-flash/index.controller.js'
 import questionQuizzController from './question-quizz/index.controller.js'
 import puzzleController from './puzzle/index.controller.js'
-
+import codeController from './code/index.controller.js'
 import scoreController from './score/index.controller.js'
+import recoveryController from './recovery/index.controller.js'
 
 export {
   authController,
   classController,
   courseStudentController,
   courseController,
+  codeController,
   pieceController,
   puzzleController,
   optionFlashController,
@@ -33,4 +35,5 @@ export {
   topicController,
   scoreController,
   userController,
+  recoveryController,
 }
