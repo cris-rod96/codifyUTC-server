@@ -1,4 +1,4 @@
-import { Course, User } from '../../database/index.database.js'
+import { Class, Course, User } from '../../database/index.database.js'
 import { bcryptUtl, jwtUtl } from '../../utils/index.utils.js'
 const formatUserResponse = (user) => ({
   id: user.id,
@@ -10,6 +10,7 @@ const formatUserResponse = (user) => ({
   dni: user.dni,
   phone: user.phone,
   courses: user.Courses,
+  classes: user.Classes,
 })
 
 const login = async (email, password) => {
@@ -18,7 +19,10 @@ const login = async (email, password) => {
       email,
       isDeleted: false,
     },
-    include: [Course],
+    include: {
+      model: Course,
+      include: [Class],
+    },
   })
 
   if (!user)
@@ -36,7 +40,7 @@ const login = async (email, password) => {
 
   const comparePassword = await bcryptUtl.comparePassword(
     password,
-    user.password
+    user.password,
   )
 
   if (!comparePassword)
@@ -51,6 +55,8 @@ const login = async (email, password) => {
     nick_name: user.nick_name,
     role: user.role,
   })
+
+  console.log(user.Classes)
 
   return {
     code: 200,

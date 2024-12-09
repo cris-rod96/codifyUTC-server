@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notificación - Codify UTC</title>
+    <style>
+      /* Reset básico */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Tipografía y diseño base */
+      body {
+        font-family: 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #eef2f3, #8e44ad);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Contenedor principal con caja moderna */
+      .email-container {
+        max-width: 700px;
+        margin: 50px auto;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease-in-out;
+      }
+
+      /* Animación suave al pasar el cursor */
+      .email-container:hover {
+        transform: scale(1.03);
+      }
+
+      /* Encabezado con color degradado */
+      .header {
+        padding: 20px;
+        background: linear-gradient(90deg, #0033a0, #e10600);
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        border-bottom: 2px solid #555;
+      }
+
+      /* Contenido principal */
+      .content {
+        padding: 20px 30px;
+      }
+
+      .date {
+        font-size: 14px;
+        font-weight: bold;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .title {
+        font-size: 22px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: #0033a0;
+        text-align: center;
+      }
+
+      .message {
+        font-size: 16px;
+        margin: 10px 0;
+        color: #555;
+        text-align: justify;
+      }
+
+      /* Detalles con información clave */
+      .detail {
+        margin: 30px 0;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .detail-header {
+        text-align: center;
+        font-weight: bold;
+        color: #555;
+        padding: 10px 0;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .detail-content-container {
+        padding: 15px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+      }
+
+      .detail-content {
+        padding: 10px;
+        border: 1px solid #0033a0;
+        border-radius: 5px;
+        color: #333;
+        font-size: 15px;
+        width: 48%;
+        margin-right: 10px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Sección de pie de página */
+      .footer {
+        margin: 20px 0;
+        font-size: 14px;
+        text-align: center;
+        color: #666;
+      }
+
+      .footer .warning {
+        font-size: 15px;
+        color: #e10600;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      /* Responsividad */
+      @media (max-width: 768px) {
+        .detail-content {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Contenedor principal -->
+    <div class="email-container">
+      <!-- Encabezado con estilo profesional -->
+      <div class="header">Notificación de Ingreso</div>
+
+      <!-- Contenido principal -->
+      <div class="content">
+        <!-- Fecha -->
+        <p class="date">Fecha: ${date_time}</p>
+        <h2 class="title">Ingreso a Codify UTC</h2>
+        <p class="message">
+          Tu ingreso fue realizado con éxito. Gracias por utilizar nuestros
+          servicios.
+        </p>
+
+        <!-- Sección de detalles -->
+        <div class="detail">
+          <div class="detail-header">Detalles de Ingreso</div>
+          <div class="detail-content-container">
+            <div class="detail-content"><strong>IP:</strong> ${ip}</div>
+            <div class="detail-content">
+              <strong>Ubicación:</strong> ${city}
+            </div>
+          </div>
+        </div>
+
+        <!-- Mensaje de advertencia -->
+        <div class="footer">
+          <p class="warning">
+            ¡Atención! Si no has realizado este acceso, por favor repórtalo de
+            inmediato.
+          </p>
+          <p>Gracias por confiar en nuestros servicios.</p>
+          <p><strong>Codify UTC</strong></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
