@@ -1,6 +1,12 @@
 import { v2 as cloudinary } from 'cloudinary'
 import stream from 'stream'
 
+cloudinary.config({
+  cloud_name: 'dxoubdrds',
+  api_key: '651877584949126',
+  api_secret: 'VeSyKNnrUWB0FSJQYxCSvRKAh9Q',
+})
+
 const uploadImage = async (folder, fileBuffer, fileName) => {
   // Creamos un stream de lectura a partir del buffer
   const bufferStream = new stream.PassThrough()

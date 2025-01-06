@@ -1,4 +1,4 @@
-import { Class, Course } from '../../database/index.database.js'
+import { Class, Course, Topic } from '../../database/index.database.js'
 
 const courseExists = async (CourseId) => {
   const course = await Course.findOne({
@@ -20,6 +20,36 @@ const getAll = async () => {
 
   return { code: 200, classes }
 }
+
+const getByUser = async (user_id) => {
+  const courses = await Course.findAll({
+    where: {
+      TeacherId: user_id,
+      isDeleted: false,
+    },
+    include: {
+      model: Class,
+      as: 'Classes',
+      where: {
+        isDeleted: false,
+      },
+      include: {
+        model: Topic,
+      },
+    },
+  })
+
+  const classes = courses.flatMap((course) =>
+    course.Classes.map((cls) => ({
+      ...cls.toJSON(), // Convertir la instancia de clase a objeto plano
+      courseId: course.id, // Agregar el ID del curso para saber a qué curso pertenece cada clase
+      courseName: course.subject, // Agregar el nombre del curso si lo necesitas
+    }))
+  )
+
+  return { code: 200, classes }
+}
+
 const getByKey = async (key, value) => {
   const classFound = await Class.findOne({
     where: {
@@ -48,6 +78,10 @@ const getByCourse = async (CourseId) => {
       CourseId,
       isDeleted: false,
     },
+
+    include: {
+      model: Topic,
+    },
   })
 
   return { code: 200, classes }
@@ -62,4 +96,4 @@ const getDeletedClasses = async () => {
 
   return { code: 200, classes }
 }
-export { getAll, getByKey, getDeletedClasses, getByCourse }
+export { getAll, getByKey, getByUser, getDeletedClasses, getByCourse }

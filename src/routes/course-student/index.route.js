@@ -13,6 +13,6 @@ courseStudentRouter.get(
   '/course/:course_id',
   courseStudentController.getStudentsByCourse
 )
-courseStudentRouter.delete('/:id', courseStudentController.deleteCourseStudent)
+courseStudentRouter.delete('/', courseStudentController.deleteCourseStudent)
 
 export default courseStudentRouter

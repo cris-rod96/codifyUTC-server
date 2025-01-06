@@ -26,12 +26,26 @@ const {
   Code,
 } = sequelize.models
 
-User.hasMany(Course, { foreignKey: 'TeacherId' })
-Course.belongsTo(User, { foreignKey: 'TeacherId' })
+User.hasMany(Course, { foreignKey: 'TeacherId', as: 'CourseTaught' })
+Course.belongsTo(User, { foreignKey: 'TeacherId', as: 'Teacher' })
 
-User.belongsToMany(Course, { through: CourseStudent, foreignKey: 'StudentId' })
+User.belongsToMany(Course, {
+  through: CourseStudent,
+  foreignKey: 'StudentId',
+  as: 'EnrolledCourses',
+})
 
-Course.belongsToMany(User, { through: CourseStudent, foreignKey: 'CourseId' })
+Course.belongsToMany(User, {
+  through: CourseStudent,
+  foreignKey: 'CourseId',
+  as: 'Students',
+})
+
+CourseStudent.belongsTo(User, { foreignKey: 'StudentId', as: 'Student' })
+User.hasMany(CourseStudent, { foreignKey: 'StudentId' })
+
+CourseStudent.belongsTo(Course, { foreignKey: 'CourseId', as: 'Course' })
+Course.hasMany(CourseStudent, { foreignKey: 'CourseId' })
 
 Course.hasMany(Class, { foreignKey: 'CourseId' })
 Class.belongsTo(Course, { foreignKey: 'CourseId' })
@@ -42,10 +56,16 @@ Topic.belongsTo(Class, { foreignKey: 'ClassId' })
 Class.hasMany(Activity, { foreignKey: 'ClassId' })
 Activity.belongsTo(Class, { foreignKey: 'ClassId' })
 
-Activity.hasMany(QuestionQuizz, { foreignKey: 'ActivityId' })
+Activity.hasMany(QuestionQuizz, {
+  foreignKey: 'ActivityId',
+  onDelete: 'CASCADE',
+})
 QuestionQuizz.belongsTo(Activity, { foreignKey: 'ActivityId' })
 
-QuestionQuizz.hasMany(OptionQuizz, { foreignKey: 'QuestionQuizzId' })
+QuestionQuizz.hasMany(OptionQuizz, {
+  foreignKey: 'QuestionQuizzId',
+  onDelete: 'CASCADE',
+})
 OptionQuizz.belongsTo(QuestionQuizz, { foreignKey: 'QuestionQuizzId' })
 
 Activity.hasMany(QuestionFlash, { foreignKey: 'ActivityId' })

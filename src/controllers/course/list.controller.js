@@ -33,6 +33,7 @@ const getByTeacher = async (req, res) => {
 
     return res.status(code).json(message ? { message } : { courses })
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json({
       message: 'Error interno. Verifique los datos e intente de nuevo.',
     })
@@ -51,4 +52,22 @@ const getByKey = async (req, res) => {
   }
 }
 
-export { getAllCourses, getAllDeletedCourses, getByTeacher, getByKey }
+const getAllCoursesWithStudents = async (req, res) => {
+  try {
+    const { code, courses } = await courseService.getAllCoursesWithStudents()
+    return res.status(code).json({ courses })
+  } catch (error) {
+    console.log(error.message)
+    return res.status(500).json({
+      message: 'Error interno. Verifique los datos e intente de nuevo.',
+    })
+  }
+}
+
+export {
+  getAllCourses,
+  getAllDeletedCourses,
+  getByTeacher,
+  getByKey,
+  getAllCoursesWithStudents,
+}

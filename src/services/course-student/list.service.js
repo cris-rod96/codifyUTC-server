@@ -11,11 +11,12 @@ const getStudentsByCourse = async (courseId) => {
     }
   }
 
-  const students = await CourseStudent.findAll({
+  const studentsInCourse = await CourseStudent.findAll({
     where: { CourseId: courseId },
     include: [
       {
         model: User,
+        as: 'Student',
         attributes: {
           exclude: ['password'],
         }, // ajusta los atributos según necesites
@@ -24,11 +25,12 @@ const getStudentsByCourse = async (courseId) => {
     ],
   })
 
+
   return {
     code: 200,
-    data: students,
+    studentsInCourse,
     message:
-      students.length > 0
+      studentsInCourse.length > 0
         ? 'Estudiantes encontrados'
         : 'No hay estudiantes en este curso.',
   }

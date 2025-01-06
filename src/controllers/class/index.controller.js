@@ -3,6 +3,7 @@ import {
   getAll,
   getByCourse,
   getByKey,
+  getByUser,
   getDeletedClasses,
 } from './list.controller.js'
 import updateClass from './update.controller.js'
@@ -13,6 +14,7 @@ export default {
   getAll,
   getByCourse,
   getByKey,
+  getByUser,
   getDeletedClasses,
   updateClass,
   deleteClass,

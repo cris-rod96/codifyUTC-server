@@ -16,19 +16,12 @@ const registerQuestionQuizz = async (data) => {
   if (!activity)
     return { code: 400, message: 'Actividad no disponible. Intente de nuevo' }
 
-  if (activity.model !== 'Quizz Code') {
-    return {
-      code: 400,
-      message: 'Tipo de actividad incorrecta. Intente de nuevo',
-    }
-  }
-
   const questionQuizz = await QuestionQuizz.create(data)
 
   return questionQuizz
     ? {
         code: 201,
-        message: 'Pregunta agregada a la actividad correctamente',
+        questionQuizz,
       }
     : {
         code: 400,

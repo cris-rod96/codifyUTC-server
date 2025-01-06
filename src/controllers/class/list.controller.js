@@ -51,4 +51,16 @@ const getDeletedClasses = async (req, res) => {
   }
 }
 
-export { getAll, getByCourse, getDeletedClasses, getByKey }
+const getByUser = async (req, res) => {
+  try {
+    const { user_id } = req.params
+    const { code, classes } = await classService.getByUser(user_id)
+    return res.status(code).json({ classes })
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Error interno. Verifique los datos e intente de nuevo.',
+    })
+  }
+}
+
+export { getAll, getByCourse, getDeletedClasses, getByKey, getByUser }

@@ -1,15 +1,27 @@
 import { topicService } from '../../services/index.services.js'
 
-const registerTopic = async (req, res) => {
+const registerTopics = async (req, res) => {
   try {
     const data = req.body
-    const { code, message } = await topicService.registerTopic(data)
-    return res.status(code).json({ message })
+
+    // Validar que `data` sea un array
+    if (!Array.isArray(data) || data.length === 0) {
+      return res.status(400).json({
+        message: 'El cuerpo de la solicitud debe ser un array no vacío.',
+      })
+    }
+
+    // Llamar al servicio
+    const { code, message, results } = await topicService.registerTopic(data)
+
+    // Enviar respuesta con detalles
+    return res.status(code).json({ message, results })
   } catch (error) {
+    console.error('Error en registerTopics:', error)
     return res.status(500).json({
       message: 'Error interno. Verifique los datos e intente de nuevo.',
     })
   }
 }
 
-export default registerTopic
+export default registerTopics

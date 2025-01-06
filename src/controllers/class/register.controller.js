@@ -4,7 +4,7 @@ const registerClass = async (req, res) => {
   try {
     const data = req.body
     const { code, message } = await classService.registerClass(data)
-    return res.status(code).json({ message })
+    return res.status(code).json({ code, message })
   } catch (error) {
     console.log(error.message)
     return res.status(500).json({

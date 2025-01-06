@@ -4,6 +4,7 @@ import {
   getAllDeletedCourses,
   getByKey,
   getByTeacher,
+  getAllCoursesWithStudents,
 } from './list.service.js'
 import registerCourse from './register.service.js'
 import updateCourse from './update.service.js'
@@ -16,4 +17,5 @@ export default {
   getByTeacher,
   registerCourse,
   updateCourse,
+  getAllCoursesWithStudents,
 }

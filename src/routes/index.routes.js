@@ -16,13 +16,15 @@ import responseRouter from './response/index.route.js'
 import scoreRouter from './score/index.route.js'
 import codeRouter from './code/index.route.js'
 import recoveryRouter from './recovery/index.route.js'
+import activityRouter from './activities/index.route.js'
 const rootRouter = Router()
 
+rootRouter.use('/activities', activityRouter)
 rootRouter.use('/auth', authRouter)
 rootRouter.use('/users', userRouter)
 rootRouter.use('/codes', codeRouter)
 rootRouter.use('/courses', courseRouter)
-rootRouter.use('/course-student', courseStudentRouter)
+rootRouter.use('/course-students', courseStudentRouter)
 rootRouter.use('/classes', classRouter)
 rootRouter.use('/option-flash', optionFlashRouter)
 rootRouter.use('/option-quizz', optionQuizzRouter)

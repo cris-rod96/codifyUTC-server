@@ -1,4 +1,9 @@
-import { Course, User } from '../../database/index.database.js'
+import {
+  Class,
+  Course,
+  CourseStudent,
+  User,
+} from '../../database/index.database.js'
 
 const teacherExists = async (TeacherId) => {
   const teacher = await User.findOne({
@@ -13,11 +18,7 @@ const teacherExists = async (TeacherId) => {
 }
 
 const getAllCourses = async () => {
-  const courses = await Course.findAll({
-    where: {
-      isDeleted: false,
-    },
-  })
+  const courses = await Course.findAll({})
 
   return { code: 200, courses }
 }
@@ -30,6 +31,16 @@ const getByTeacher = async (TeacherId) => {
       TeacherId,
       isDeleted: false,
     },
+    include: [
+      {
+        model: User,
+        as: 'Students',
+      },
+      {
+        model: Class,
+        as: 'Classes',
+      },
+    ],
   })
   return { code: 200, courses }
 }
@@ -57,4 +68,26 @@ const getAllDeletedCourses = async () => {
   return { code: 200, courses }
 }
 
-export { getAllCourses, getAllDeletedCourses, getByTeacher, getByKey }
+const getAllCoursesWithStudents = async () => {
+  const courses = await Course.findAll({
+    where: {
+      isDeleted: false,
+    },
+
+    include: {
+      model: User,
+      as: 'Students',
+      through: { attributes: [] },
+    },
+  })
+
+  return { code: 200, courses }
+}
+
+export {
+  getAllCourses,
+  getAllDeletedCourses,
+  getByTeacher,
+  getByKey,
+  getAllCoursesWithStudents,
+}

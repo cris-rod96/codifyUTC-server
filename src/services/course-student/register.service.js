@@ -24,7 +24,8 @@ const studentExists = async (id) => {
 
 // Servicio para registrar un estudiante en un curso
 const registerCourseStudent = async (data) => {
-  const { CourseId, StudentId } = data
+  const { CourseId, StudentId, access_code } = data
+  console.log(CourseId, StudentId, access_code)
 
   // Verifica la existencia del curso
   const course = await courseExists(CourseId)
@@ -44,7 +45,21 @@ const registerCourseStudent = async (data) => {
     }
   }
 
-  // Verifica si el estudiante ya está registrado en el curso
+  // Verificar si el código de acceso del curso es correcto
+  const courseFound = await Course.findOne({
+    where: {
+      id: CourseId,
+      isDeleted: false,
+    },
+  })
+
+  if (courseFound.access_code !== access_code) {
+    return {
+      code: 400,
+      message: 'Código de acceso incorrecto para este curso. Intente de nuevo.',
+    }
+  }
+
   const alreadyRegistered = await CourseStudent.findOne({
     where: {
       CourseId,
@@ -54,7 +69,7 @@ const registerCourseStudent = async (data) => {
   if (alreadyRegistered) {
     return {
       code: 400,
-      message: 'El estudiante ya está registrado en este curso.',
+      message: 'Ya estas registrado en este curso.',
     }
   }
 
@@ -63,11 +78,11 @@ const registerCourseStudent = async (data) => {
   return courseStudent
     ? {
         code: 201,
-        message: 'Estudiante registrado en el curso con éxito.',
+        message: 'Has sido registrado con éxito.',
       }
     : {
         code: 400,
-        message: 'Estudiante no registrado en el curso. Intente de nuevo.',
+        message: 'Error al registrar. Intente de nuevo.',
       }
 }
 

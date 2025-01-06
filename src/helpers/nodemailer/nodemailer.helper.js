@@ -64,10 +64,21 @@ const loginNotification = (to, name, ip, city) => {
   send(to, file, 'Notificación - Inicio de sesión')
 }
 
+const resendCode = (to, name, code) => {
+  const pathname = generatePathName('resend-code')
+  const file = fs
+    .readFileSync(pathname, { encoding: 'utf-8' })
+    .toString()
+    .replace('${name}', name)
+    .replace('${code}', code)
+  send(to, file, 'CodifyUTC - Activación')
+}
+
 export default {
   recoveryPassword,
   welcome,
   confirmActivation,
   confirmPassword,
   loginNotification,
+  resendCode,
 }

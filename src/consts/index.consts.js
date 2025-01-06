@@ -6,7 +6,6 @@ export const {
   DB_DEV,
   DB_PROD,
   SECRET_WORD,
-  CLOUDINARY_URL,
   GMAIL_DIR,
   GMAIL_PASSWORD,
   TWILIO_NUM,

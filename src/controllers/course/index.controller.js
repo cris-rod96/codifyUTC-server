@@ -4,6 +4,7 @@ import {
   getAllDeletedCourses,
   getByTeacher,
   getByKey,
+  getAllCoursesWithStudents,
 } from './list.controller.js'
 import registerCourse from './register.controller.js'
 import updateCourse from './update.controller.js'
@@ -16,4 +17,5 @@ export default {
   getByKey,
   registerCourse,
   updateCourse,
+  getAllCoursesWithStudents,
 }

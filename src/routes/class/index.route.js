@@ -5,6 +5,7 @@ const classRouter = Router()
 
 classRouter.get('/', classController.getAll)
 classRouter.get('/course/:course_id', classController.getByCourse)
+classRouter.get('/user/:user_id', classController.getByUser)
 classRouter.get('/search', classController.getByKey)
 classRouter.get('/deleted', classController.getDeletedClasses)
 classRouter.post('/', classController.registerClass)

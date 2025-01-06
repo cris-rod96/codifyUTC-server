@@ -16,4 +16,7 @@ courseRouter.get('/search', courseController.getByKey)
 courseRouter.put('/:id', courseController.updateCourse)
 courseRouter.delete('/:id', courseController.deleteCourse)
 
+// Obtener todos los cursos con sus estudiantes
+courseRouter.get('/with_students', courseController.getAllCoursesWithStudents)
+
 export default courseRouter

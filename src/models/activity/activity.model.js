@@ -17,7 +17,7 @@ const ActivityModel = (sequelize) => {
 
       created_at: {
         type: DataTypes.DATE,
-        defaultValue: DataTypes.NOW,
+        allowNull: false,
       },
       due_date: {
         type: DataTypes.DATE,
@@ -39,9 +39,18 @@ const ActivityModel = (sequelize) => {
         allowNull: false,
       },
 
+      total_score: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       type: {
         type: DataTypes.ENUM,
-        values: ['Quizz Code', 'Flash Code', 'Output Battle', 'Puzzle Code'],
+        values: [
+          'Quizz Code',
+          'Lightning Code',
+          'Puzzle Master',
+          'Brain Boost',
+        ],
         allowNull: false,
       },
 

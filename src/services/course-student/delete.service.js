@@ -1,9 +1,10 @@
 import { CourseStudent, Course, User } from '../../database/index.database.js'
 
 // Servicio para eliminar el registro de un estudiante en un curso
-const deleteCourseStudent = async (courseId, studentId) => {
+const deleteCourseStudent = async (course_id, student_id) => {
+  console.log(course_id, student_id)
   // Verifica si el curso existe
-  const course = await Course.findByPk(courseId)
+  const course = await Course.findByPk(course_id)
   if (!course || course.isDeleted) {
     return {
       code: 404,
@@ -11,9 +12,9 @@ const deleteCourseStudent = async (courseId, studentId) => {
     }
   }
 
-  // Verifica si el estudiante existe y está activo
+  // // Verifica si el estudiante existe y está activo
   const student = await User.findOne({
-    where: { id: studentId, isActive: true, isDeleted: false },
+    where: { id: student_id, isActive: true, isDeleted: false },
   })
   if (!student) {
     return {
@@ -22,9 +23,9 @@ const deleteCourseStudent = async (courseId, studentId) => {
     }
   }
 
-  // Verifica si el registro CourseStudent existe
+  // // Verifica si el registro CourseStudent existe
   const courseStudent = await CourseStudent.findOne({
-    where: { CourseId: courseId, StudentId: studentId },
+    where: { CourseId: course_id, StudentId: student_id },
   })
   if (!courseStudent) {
     return {
@@ -33,7 +34,7 @@ const deleteCourseStudent = async (courseId, studentId) => {
     }
   }
 
-  // Realiza la eliminación del registro
+  // // Realiza la eliminación del registro
   await courseStudent.destroy()
 
   return {

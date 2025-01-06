@@ -1,7 +1,6 @@
 import { Course, User } from '../../database/index.database.js'
 
 const existTeacher = async (TeacherId) => {
-  console.log(TeacherId)
   const teacher = await User.findOne({
     where: {
       id: TeacherId,

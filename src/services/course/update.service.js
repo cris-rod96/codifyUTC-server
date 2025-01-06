@@ -1,16 +1,11 @@
 import { Course } from '../../database/index.database.js'
 
 const updateCourse = async (id, data) => {
-  const course = await Course.findOne({
-    where: {
-      id,
-      isDeleted: false,
-    },
-  })
+  const course = await Course.findOne({})
   if (!course) return { code: 400, message: 'Curso no encontrado.' }
 
   const [rows] = await Course.update(data, {
-    where: { id, isDeleted: false },
+    where: { id },
   })
 
   return rows > 0

@@ -1,4 +1,5 @@
 import authController from './auth/index.controller.js'
+import activityController from './activity/index.controller.js'
 import classController from './class/index.controller.js'
 import courseController from './course/index.controller.js'
 import courseStudentController from './course-student/index.controller.js'
@@ -18,6 +19,7 @@ import scoreController from './score/index.controller.js'
 import recoveryController from './recovery/index.controller.js'
 
 export {
+  activityController,
   authController,
   classController,
   courseStudentController,

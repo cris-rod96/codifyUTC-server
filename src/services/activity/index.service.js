@@ -4,6 +4,7 @@ import {
   getByClass,
   getByID,
   getByKey,
+  getByTeacher,
 } from './list.service.js'
 import updateActivity from './update.service.js'
 import deleteActivity from './delete.service.js'
@@ -14,6 +15,7 @@ export default {
   getByClass,
   getByID,
   getByKey,
+  getByTeacher,
   registerActivity,
   updateActivity,
 }

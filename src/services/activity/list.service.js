@@ -1,4 +1,5 @@
-import { Activity, Class } from '../../database/index.database.js'
+import { where } from 'sequelize'
+import { Activity, Class, Course } from '../../database/index.database.js'
 
 const classExits = async (id) => {
   return await Class.findOne({ where: { id, isDeleted: false } })
@@ -45,4 +46,20 @@ const getByClass = async (ClassId) => {
   return { code: 200, activities }
 }
 
-export { getAllActivities, getByID, getByClass, getByKey }
+const getByTeacher = async (TeacherId) => {
+  const activities = await Activity.findAll({
+    include: {
+      model: Class,
+      include: {
+        model: Course,
+        where: { TeacherId: TeacherId },
+      },
+    },
+  })
+
+  return activities
+    ? { code: 201, activities }
+    : { code: 400, message: 'No se pudo obtener las actividades' }
+}
+
+export { getAllActivities, getByID, getByTeacher, getByClass, getByKey }

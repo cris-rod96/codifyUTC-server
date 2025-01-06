@@ -7,6 +7,7 @@ const courseExists = async (CourseId) => {
       isDeleted: false,
     },
   })
+  return course
 }
 
 const registerClass = async (data) => {

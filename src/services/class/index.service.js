@@ -3,6 +3,7 @@ import {
   getAll,
   getByCourse,
   getByKey,
+  getByUser,
   getDeletedClasses,
 } from './list.service.js'
 import registerClass from './register.service.js'
@@ -13,6 +14,7 @@ export default {
   deleteClass,
   getByCourse,
   getByKey,
+  getByUser,
   getDeletedClasses,
   registerClass,
   updateClass,
