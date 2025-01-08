@@ -6,6 +6,7 @@ const getById = async (req, res) => {
     const { code, activity, message } = await activityService.getByID(id)
     return res.status(code).json(message ? { message } : { activity })
   } catch (error) {
+    console.log(error.message)
     return res.status(500).json({
       message: 'Error interno. Verifique los datos e intente de nuevo.',
     })

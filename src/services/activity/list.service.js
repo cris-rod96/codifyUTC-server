@@ -1,4 +1,3 @@
-import { where } from 'sequelize'
 import {
   Activity,
   Class,
