@@ -11,6 +11,7 @@ activityRouter.post(
 )
 activityRouter.get('/class/:class_id', activityController.getByClass)
 activityRouter.get('/teacher/:user_id', activityController.getByTeacher)
+activityRouter.get('/:id', activityController.getById)
 
 activityRouter.delete('/:activity_id', activityController.deleteActivity)
 
