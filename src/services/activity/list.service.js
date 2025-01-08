@@ -1,5 +1,11 @@
 import { where } from 'sequelize'
-import { Activity, Class, Course } from '../../database/index.database.js'
+import {
+  Activity,
+  Class,
+  Course,
+  OptionQuizz,
+  QuestionQuizz,
+} from '../../database/index.database.js'
 
 const classExits = async (id) => {
   return await Class.findOne({ where: { id, isDeleted: false } })
@@ -11,7 +17,21 @@ const getAllActivities = async () => {
 }
 
 const getByID = async (id) => {
-  const activity = await Activity.findOne({ where: { id } })
+  const activity = await Activity.findOne({
+    where: { id },
+    include: [
+      {
+        model: QuestionQuizz,
+        as: 'questions',
+        include: [
+          {
+            model: OptionQuizz,
+            as: 'options',
+          },
+        ],
+      },
+    ],
+  })
 
   return activity
     ? {
