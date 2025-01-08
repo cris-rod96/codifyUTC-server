@@ -59,12 +59,14 @@ Activity.belongsTo(Class, { foreignKey: 'ClassId' })
 Activity.hasMany(QuestionQuizz, {
   foreignKey: 'ActivityId',
   onDelete: 'CASCADE',
+  as: 'Questions',
 })
 QuestionQuizz.belongsTo(Activity, { foreignKey: 'ActivityId' })
 
 QuestionQuizz.hasMany(OptionQuizz, {
   foreignKey: 'QuestionQuizzId',
   onDelete: 'CASCADE',
+  as: 'Options',
 })
 OptionQuizz.belongsTo(QuestionQuizz, { foreignKey: 'QuestionQuizzId' })
 

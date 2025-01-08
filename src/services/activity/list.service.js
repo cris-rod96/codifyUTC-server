@@ -21,11 +21,11 @@ const getByID = async (id) => {
     include: [
       {
         model: QuestionQuizz,
-        as: 'questions',
+        as: 'Questions',
         include: [
           {
             model: OptionQuizz,
-            as: 'options',
+            as: 'Options',
           },
         ],
       },
