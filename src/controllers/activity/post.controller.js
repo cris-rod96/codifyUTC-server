@@ -44,6 +44,7 @@ const createActivity = async (req, res) => {
           question: data[`activity_${i}_question`],
           time_limit: parseInt(data[`activity_${i}_time_limit`]),
           score: parseInt(data[`activity_${i}_score`]),
+          feedback: data[`activity_${i}_feedback`],
           ActivityId: activity.id,
         }
 

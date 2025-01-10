@@ -24,6 +24,11 @@ const QuestionQuizzModel = (sequelize) => {
         allowNull: false,
       },
 
+      feedbac: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+
       ActivityId: {
         type: DataTypes.UUID,
         allowNull: false,
