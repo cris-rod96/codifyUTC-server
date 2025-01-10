@@ -57,7 +57,7 @@ const getUserByKey = async (key, value) => {
 const verfyUser = async (email, nick_name) => {
   const user = await User.findOne({
     where: {
-      [Op.or]: [{ email, nick_name }],
+      [Op.or]: [{ email }, { nick_name }],
     },
   })
   return user ? { code: 400, exist: true } : { code: 200, exist: false }
