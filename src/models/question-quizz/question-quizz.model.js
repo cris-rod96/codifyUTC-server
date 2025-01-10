@@ -24,7 +24,7 @@ const QuestionQuizzModel = (sequelize) => {
         allowNull: false,
       },
 
-      feedbac: {
+      feedback: {
         type: DataTypes.TEXT,
         allowNull: false,
       },
