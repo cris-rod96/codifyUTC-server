@@ -18,15 +18,16 @@ const CourseModel = (sequelize) => {
       semester: {
         type: DataTypes.ENUM,
         values: [
-          'Primero',
+          'Primer',
           'Segundo',
-          'Tercero',
+          'Tercer',
           'Cuarto',
           'Quinto',
           'Sexto',
           'Séptimo',
           'Octavo',
           'Noveno',
+          'Décimo',
         ],
         allowNull: false,
       },
