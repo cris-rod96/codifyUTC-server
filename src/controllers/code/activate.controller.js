@@ -15,8 +15,7 @@ const activateAccount = async (req, res) => {
         email,
       },
     })
-    console.log(user)
-    if (user) {
+    if (user && code === 200) {
       user.isActive = true
       await user.save()
       nodemailerHelper.confirmActivation(user.email)

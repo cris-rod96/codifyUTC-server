@@ -17,9 +17,9 @@ const registerOptionFlash = async (data) => {
       message: 'Pregunta no encontrada. Verifique e intente de nuevo.',
     }
 
-  const OptionFlash = await OptionFlash.create(data)
+  const optionFlash = await OptionFlash.create(data)
 
-  return OptionFlash
+  return optionFlash
     ? {
         code: 201,
         message: 'Respuesta registrada con éxito',

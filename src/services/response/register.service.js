@@ -21,7 +21,7 @@ const activityExists = async (id) => {
 }
 
 const registerResponse = async (data) => {
-  const { StudentId, ActivityId } = data
+  const { StudentId, ActivityId, } = data
 
   const student = await studentExists(StudentId)
   const activity = await activityExists(ActivityId)

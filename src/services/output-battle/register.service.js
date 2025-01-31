@@ -16,19 +16,12 @@ const registerOutputBattle = async (data) => {
   if (!activity)
     return { code: 400, message: 'Actividad no disponible. Intente de nuevo' }
 
-  if (activity.type !== 'Output Battle') {
-    return {
-      code: 400,
-      message: 'Tipo de actividad incorrecta. Intente de nuevo',
-    }
-  }
+  const outputQuestion = await OutputBattle.create(data)
 
-  const outputBattle = await OutputBattle.create(data)
-
-  return outputBattle
+  return outputQuestion
     ? {
         code: 201,
-        message: 'Desafío agregado a la actividad correctamente',
+        outputQuestion,
       }
     : {
         code: 400,

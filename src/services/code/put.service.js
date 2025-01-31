@@ -46,4 +46,21 @@ const recoveryPassword = async (data) => {
   return { code: 200, message: 'Código verificado con éxito' }
 }
 
-export { activateAccount, recoveryPassword }
+const resenCode = async (data) => {
+  const { method, value, newCode, type } = data
+
+  const codeFound = await Code.findOne({
+    where: {
+      [method === 'Email' ? 'email' : 'phone']: value,
+      type,
+    },
+  })
+
+  codeFound.used = false
+  codeFound.code = newCode
+  await codeFound.save()
+
+  return { code: 200, message: 'Código reenviado' }
+}
+
+export { activateAccount, recoveryPassword, resenCode }

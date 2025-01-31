@@ -17,6 +17,7 @@ import questionFlashService from './question-flash/index.service.js'
 import questionQuizzService from './question-quizz/index.service.js'
 import codeService from './code/index.service.js'
 import recoveryService from './recovery/index.service.js'
+import quizzResponseService from './quizz-response/index.service.js'
 
 export {
   activityService,
@@ -38,4 +39,5 @@ export {
   topicService,
   userService,
   recoveryService,
+  quizzResponseService,
 }

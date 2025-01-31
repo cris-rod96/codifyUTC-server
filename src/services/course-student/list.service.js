@@ -25,7 +25,6 @@ const getStudentsByCourse = async (courseId) => {
     ],
   })
 
-
   return {
     code: 200,
     studentsInCourse,
@@ -52,24 +51,20 @@ const getCoursesByStudent = async (studentId) => {
     }
   }
 
-  const courses = await CourseStudent.findAll({
+  const course = await CourseStudent.findOne({
     where: { StudentId: studentId },
     include: [
       {
         model: Course,
+        as: 'Course',
         where: { isDeleted: false },
       },
     ],
   })
 
-  return {
-    code: 200,
-    data: courses,
-    message:
-      courses.length > 0
-        ? 'Cursos encontrados'
-        : 'No hay cursos para este estudiante.',
-  }
+  return course
+    ? { code: 200, course }
+    : { code: 400, message: 'Aún no estas inscrito en un curso' }
 }
 
 // Obtener el registro de un estudiante en un curso específico

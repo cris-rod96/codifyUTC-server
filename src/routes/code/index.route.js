@@ -9,4 +9,7 @@ codeRouter.put('/recovery-password', codeController.recoveryPassword)
 // requestCode
 codeRouter.get('/request/:email', codeController.requestCode)
 
+// resendCode
+codeRouter.patch('/resend', codeController.resendCode)
+
 export default codeRouter

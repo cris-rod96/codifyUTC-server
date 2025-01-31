@@ -15,6 +15,7 @@ import ResponseModel from './response/response.model.js'
 import ScoreModel from './score/score.model.js'
 import SupportModel from './support/support.model.js'
 import CodeModel from './code/code.model.js'
+import QuizzResponseModel from './quizz-response/quizz-response.model.js'
 
 export const models = [
   ActivityModel,
@@ -32,6 +33,7 @@ export const models = [
   QuestionFlashModel,
   OptionFlashModel,
   ResponseModel,
+  QuizzResponseModel,
   ScoreModel,
   SupportModel,
 ]

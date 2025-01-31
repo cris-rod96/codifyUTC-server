@@ -11,6 +11,7 @@ const classExits = async (id) => {
 
 const registerActivity = async (data) => {
   try {
+    console.log('Aqui: ', data)
     const { ClassId } = data
     if (!classExits(ClassId))
       return { code: 404, message: 'Clase no disponible. Intente de nuevo.' }

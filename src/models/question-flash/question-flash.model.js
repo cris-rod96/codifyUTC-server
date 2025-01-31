@@ -30,6 +30,11 @@ const QuestionFlashModel = (sequelize) => {
         allowNull: false,
       },
 
+      feedback: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+
       ActivityId: {
         type: DataTypes.UUID,
         allowNull: false,

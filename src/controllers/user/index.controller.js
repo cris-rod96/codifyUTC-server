@@ -8,7 +8,7 @@ import {
   verfyUser,
 } from './list.controller.js'
 import registerUser from './register.controller.js'
-import { updateUser, changePassword } from './update.controller.js'
+import { updateUser, changePassword, newPassword } from './update.controller.js'
 
 export default {
   deleteUser,
@@ -21,4 +21,5 @@ export default {
   updateUser,
   verfyUser,
   changePassword,
+  newPassword,
 }

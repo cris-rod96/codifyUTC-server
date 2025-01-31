@@ -17,6 +17,7 @@ import puzzleController from './puzzle/index.controller.js'
 import codeController from './code/index.controller.js'
 import scoreController from './score/index.controller.js'
 import recoveryController from './recovery/index.controller.js'
+import quizzResponseController from './quizz-response/index.controller.js'
 
 export {
   activityController,
@@ -38,4 +39,5 @@ export {
   scoreController,
   userController,
   recoveryController,
+  quizzResponseController,
 }

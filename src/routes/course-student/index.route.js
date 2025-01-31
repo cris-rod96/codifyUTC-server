@@ -14,5 +14,6 @@ courseStudentRouter.get(
   courseStudentController.getStudentsByCourse
 )
 courseStudentRouter.delete('/', courseStudentController.deleteCourseStudent)
+courseStudentRouter.delete('/banned', courseStudentController.bannedStudent)
 
 export default courseStudentRouter

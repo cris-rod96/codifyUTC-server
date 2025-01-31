@@ -35,6 +35,11 @@ const OutputBattleModel = (sequelize) => {
         allowNull: false,
       },
 
+      feedback: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
       ActivityId: {
         type: DataTypes.UUID,
         allowNull: false,

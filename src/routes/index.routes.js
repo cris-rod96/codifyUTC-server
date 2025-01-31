@@ -17,6 +17,7 @@ import scoreRouter from './score/index.route.js'
 import codeRouter from './code/index.route.js'
 import recoveryRouter from './recovery/index.route.js'
 import activityRouter from './activities/index.route.js'
+import quizzResponseRouter from './quizz-response/index.route.js'
 const rootRouter = Router()
 
 rootRouter.use('/activities', activityRouter)
@@ -37,4 +38,5 @@ rootRouter.use('/question-flash', questionFlashRouter)
 rootRouter.use('/question-quizz', questionQuizzRouter)
 rootRouter.use('/scores', scoreRouter)
 rootRouter.use('/recover', recoveryRouter)
+rootRouter.use('/quizz-response', quizzResponseRouter)
 export default rootRouter

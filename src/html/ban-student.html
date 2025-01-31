@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notificación de Eliminación del Curso - Codify UTC</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .header img {
+        width: 150px;
+      }
+
+      .title {
+        font-size: 24px;
+        color: #d32f2f;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .message {
+        font-size: 16px;
+        color: #555555;
+        line-height: 1.5;
+        margin: 20px 0;
+      }
+
+      .reason {
+        font-size: 18px;
+        font-weight: bold;
+        color: #d32f2f;
+        padding: 10px;
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        text-align: center;
+      }
+
+      .footer {
+        text-align: center;
+        font-size: 12px;
+        color: #888888;
+      }
+
+      .footer a {
+        color: #d32f2f;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://www.utc.edu.ec/Portals/0/BELEN/NUEVAimagen/universidad_def.png?ver=2019-05-08-101730-527"
+          alt="Codify UTC Logo"
+        />
+      </div>
+      <div class="title">Notificación de Eliminación del Curso</div>
+      <div class="message">
+        ¡Hola <strong>${studentName}</strong>!<br /><br />
+        Te informamos que has sido eliminado del curso
+        <strong>${courseName}</strong> por el docente
+        <strong>${teacherName}</strong>. <br /><br />
+        Razón proporcionada:
+      </div>
+      <div class="reason">${reason}</div>
+      <div class="message">
+        Si tienes alguna duda o necesitas más información, por favor contacta a
+        tu docente o al soporte académico.
+      </div>
+
+      <div class="footer">
+        <p>Este es un correo automático. No respondas a este mensaje.</p>
+        <p>
+          Si necesitas asistencia, puedes contactar con el soporte técnico de la
+          Universidad Técnica de Cotopaxi.
+        </p>
+        <p>© 2025 Codify UTC | Universidad Técnica de Cotopaxi</p>
+      </div>
+    </div>
+  </body>
+</html>

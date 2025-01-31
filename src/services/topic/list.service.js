@@ -23,9 +23,22 @@ const getByClass = async (ClassId) => {
     where: {
       ClassId,
     },
+    order: [['created_at', 'ASC']],
   })
 
   return { code: 200, topics }
 }
 
-export { getByClass, getAllTopics }
+const getById = async (id) => {
+  const topic = await Topic.findOne({
+    where: {
+      id,
+    },
+  })
+
+  return topic
+    ? { code: 200, topic }
+    : { code: 400, message: 'No se encontró contenido' }
+}
+
+export { getByClass, getAllTopics, getById }

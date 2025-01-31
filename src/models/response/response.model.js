@@ -9,34 +9,15 @@ const ResponseModel = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
-      response: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
 
       time_taken: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
 
-      score: {
+      score_total: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
-
-      isCorrect: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
-
-      question: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-
-      explanation: {
-        type: DataTypes.TEXT,
-        allowNull: true,
       },
 
       StudentId: {
@@ -55,6 +36,11 @@ const ResponseModel = (sequelize) => {
           model: 'Activities',
           key: 'id',
         },
+      },
+
+      completionDate: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
       },
     },
     {

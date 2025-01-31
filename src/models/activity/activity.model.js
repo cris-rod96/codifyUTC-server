@@ -16,11 +16,11 @@ const ActivityModel = (sequelize) => {
       },
 
       created_at: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       due_date: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
 

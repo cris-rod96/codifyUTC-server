@@ -1,5 +1,16 @@
 import { responseService } from '../../services/index.services.js'
 
+const getAll = async (req, res) => {
+  try {
+    const { code, responses } = await responseService.getAll()
+    return res.status(code).json({ responses })
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Error interno. Verifique los datos e intente de nuevo.',
+    })
+  }
+}
+
 const getByActivity = async (req, res) => {
   try {
     const { activity_id } = req.params
@@ -37,4 +48,4 @@ const getStudentByActivity = async (req, res) => {
   }
 }
 
-export { getByActivity, getByStudent, getStudentByActivity }
+export { getAll, getByActivity, getByStudent, getStudentByActivity }

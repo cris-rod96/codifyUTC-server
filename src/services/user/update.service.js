@@ -6,7 +6,7 @@ const existeOtherUser = async (id, key, value) => {
     where: {
       [key]: value,
       id: {
-        [Op.ne]: [id],
+        [Op.ne]: id,
       },
     },
   })
@@ -15,41 +15,48 @@ const existeOtherUser = async (id, key, value) => {
 }
 
 const updateUser = async (id, data) => {
-  const { phone, nick_name } = data
-  const checks = []
+  const { phone } = data
 
-  if (phone) checks.push(existeOtherUser(id, 'phone', phone))
-
-  if (nick_name) checks.push(existeOtherUser(id, 'nick_name', nick_name))
-
-  const results = await Promise.all(checks)
-
-  if (phone && results[0])
-    return {
-      code: 400,
-      message: 'Ya existe un usuario diferente con este número de teléfono.',
-    }
-  if (nick_name && results[1])
-    return {
-      code: 400,
-      message: 'Ya existe un usuario diferente con este nombre de usuario.',
-    }
+  if (phone) {
+    const exist = await existeOtherUser(id, 'phone', phone)
+    if (exist) return { code: 400, message: 'Teléfono no disponible' }
+  }
 
   const [rows] = await User.update(data, {
-    where: {
-      id,
-    },
+    where: { id },
   })
 
-  return rows > 0
-    ? {
-        code: 200,
-        message: 'Información del usuario actualizada con éxito',
-      }
-    : {
-        code: 400,
-        message: 'No se pudo actualizar la información. Intente más tarde.',
-      }
+  if (rows === 0) {
+    return {
+      code: 400,
+      message: 'No se pudo actualizar la información. Intente más tarde.',
+    }
+  }
+
+  // Obtener el usuario actualizado excluyendo la contraseña
+  const updatedUser = await User.findOne({
+    where: { id },
+    attributes: { exclude: ['password'] }, // Excluye la contraseña
+  })
+
+  return {
+    code: 200,
+    message: 'Información del usuario actualizada con éxito',
+    data: updatedUser,
+  }
+}
+
+const newPassword = async (user_id, password) => {
+  const user = await User.findOne({
+    where: {
+      id: user_id,
+    },
+  })
+  if (!user) return { code: 400, message: 'El usuario no existe' }
+
+  user.password = password
+  await user.save()
+  return { code: 200, message: 'Contraseña cambiada con éxito.' }
 }
 
 const changePassword = async (data) => {
@@ -70,4 +77,4 @@ const changePassword = async (data) => {
   return { code: 200, message: 'Contraseña cambiada con éxito.' }
 }
 
-export { updateUser, changePassword }
+export { updateUser, changePassword, newPassword }

@@ -27,18 +27,18 @@ const welcome = (to, name, code) => {
     .toString()
     .replace('${name}', name)
     .replace('${code}', code)
-  send(to, file, 'CodifyUTC - Bienvenido')
+  send(to, file, 'Codify-UTC - Bienvenido')
 }
 
 const confirmActivation = (to) => {
   const pathname = generatePathName('confirm-activation')
   const file = fs.readFileSync(pathname, { encoding: 'utf-8' }).toString()
-  send(to, file, 'Worknet - Cuenta Activada')
+  send(to, file, 'Codify-UTC - Cuenta Activada')
 }
 const confirmPassword = (to) => {
   const pathname = generatePathName('confirm-pasword')
   const file = fs.readFileSync(pathname, { encoding: 'utf-8' }).toString()
-  send(to, file, 'Worknet - Contraseña actualizada')
+  send(to, file, 'Codify-UTC - Contraseña actualizada')
 }
 
 const recoveryPassword = (to, code) => {
@@ -71,7 +71,19 @@ const resendCode = (to, name, code) => {
     .toString()
     .replace('${name}', name)
     .replace('${code}', code)
-  send(to, file, 'CodifyUTC - Activación')
+  send(to, file, 'Codify-UTC - Activación')
+}
+
+const bannedStudent = (to, student_name, course_name, teacher_name, reason) => {
+  const pathname = generatePathName('ban-student')
+  const file = fs
+    .readFileSync(pathname, { encoding: 'utf-8' })
+    .toString()
+    .replace('${studentName}', student_name)
+    .replace('${courseName}', course_name)
+    .replace('${teacherName}', teacher_name)
+    .replace('${reason}', reason)
+  send(to, file, 'Codify-UTC - Notificación Baneo')
 }
 
 export default {
@@ -81,4 +93,5 @@ export default {
   confirmPassword,
   loginNotification,
   resendCode,
+  bannedStudent,
 }

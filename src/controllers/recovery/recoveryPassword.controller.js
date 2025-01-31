@@ -4,7 +4,6 @@ import randomstring from 'randomstring'
 const recoveryPassword = async (req, res) => {
   try {
     const { method, value } = req.body
-    console.log(method, value)
     const newCode = randomstring.generate({
       length: 4,
       charset: 'numeric',
@@ -35,7 +34,6 @@ const recoveryPassword = async (req, res) => {
       return res.status(code).json({ message })
     }
   } catch (error) {
-    console.log(error.message)
     return res.status(500).json({
       message: 'Error interno. Verifique los datos e intente de nuevo.',
     })

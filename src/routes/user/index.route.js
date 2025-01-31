@@ -15,6 +15,12 @@ userRouter.get('/active/:isActive', userController.getUsersByActive)
 userRouter.get('/roles', userController.getUsersByRole)
 userRouter.get('/deleted', userController.getUsersDeleted)
 userRouter.put('/change-password', userController.changePassword)
-userRouter.put('/:id', userController.updateUser)
+userRouter.patch(
+  '/:id',
+  multerHelper.upload.single('profile_picture'),
+  userController.updateUser
+)
+
+userRouter.patch('/new-password/:user_id', userController.newPassword)
 
 export default userRouter

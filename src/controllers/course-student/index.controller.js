@@ -1,4 +1,4 @@
-import deleteCourseStudent from './delete.controller.js'
+import { deleteCourseStudent, bannedStudent } from './delete.controller.js'
 import {
   getCourseStudentRecord,
   getCoursesByStudent,
@@ -12,4 +12,5 @@ export default {
   getStudentsByCourse,
   registerCourseStudent,
   deleteCourseStudent,
+  bannedStudent,
 }

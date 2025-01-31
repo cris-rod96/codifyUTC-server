@@ -24,6 +24,7 @@ const {
   Topic,
   User,
   Code,
+  QuizzResponse,
 } = sequelize.models
 
 User.hasMany(Course, { foreignKey: 'TeacherId', as: 'CourseTaught' })
@@ -91,6 +92,9 @@ Response.belongsTo(User, { foreignKey: 'StudentId' })
 Activity.hasMany(Response, { foreignKey: 'ActivityId' })
 Response.belongsTo(Activity, { foreignKey: 'ActivityId' })
 
+Response.hasMany(QuizzResponse, { foreignKey: 'ResponseId' })
+QuizzResponse.belongsTo(Response, { foreignKey: 'ResponseId' })
+
 User.hasMany(Score, { foreignKey: 'StudentId' })
 Score.belongsTo(User, { foreignKey: 'StudentId' })
 
@@ -114,6 +118,7 @@ export {
   QuestionFlash,
   QuestionQuizz,
   Response,
+  QuizzResponse,
   Score,
   Support,
   Topic,
