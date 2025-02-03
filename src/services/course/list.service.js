@@ -2,6 +2,7 @@ import {
   Class,
   Course,
   CourseStudent,
+  Topic,
   User,
 } from '../../database/index.database.js'
 
@@ -39,6 +40,12 @@ const getByTeacher = async (TeacherId) => {
       {
         model: Class,
         as: 'Classes',
+        include: [
+          {
+            model: Topic,
+            as: 'Topics',
+          },
+        ],
       },
     ],
   })

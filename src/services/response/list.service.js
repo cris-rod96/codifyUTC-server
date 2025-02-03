@@ -1,11 +1,13 @@
-import { Response, User } from '../../database/index.database.js'
+import { Activity, Response, User } from '../../database/index.database.js'
 
 const getAll = async () => {
   const responses = await Response.findAll({
     include: [
       {
         model: User,
-        attributes: ['password'],
+        attributes: {
+          exclude: ['password'],
+        },
       },
     ],
   })
@@ -37,6 +39,11 @@ const getByStudent = async (StudentId) => {
     where: {
       StudentId,
     },
+    include: [
+      {
+        model: Activity,
+      },
+    ],
   })
 
   return { code: 200, responses }

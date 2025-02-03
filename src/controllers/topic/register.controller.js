@@ -12,10 +12,14 @@ const registerTopics = async (req, res) => {
     }
 
     // Llamar al servicio
-    const { code, message, results } = await topicService.registerTopic(data)
+    const { code, message, results, topics } = await topicService.registerTopic(
+      data
+    )
 
     // Enviar respuesta con detalles
-    return res.status(code).json({ message, results })
+    return res
+      .status(code)
+      .json(topics ? { message, results, topics } : { message, results })
   } catch (error) {
     console.error('Error en registerTopics:', error)
     return res.status(500).json({

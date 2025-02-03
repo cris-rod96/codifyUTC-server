@@ -1,4 +1,4 @@
-import { Class, Course } from '../../database/index.database.js'
+import { Class, Course, Topic } from '../../database/index.database.js'
 
 const courseExists = async (CourseId) => {
   const course = await Course.findOne({
@@ -18,12 +18,22 @@ const registerClass = async (data) => {
 
   const new_class = await Class.create(data)
 
-  return new_class
-    ? { code: 201, message: 'Clase registrada con éxito.' }
-    : {
-        code: 400,
-        message: 'No se pudo registrar la clase. Intente de nuevo.',
-      }
+  if (new_class) {
+    const classWithTopic = await Class.findByPk(new_class.id, {
+      include: [{ model: Topic, as: 'Topics' }],
+    })
+
+    return {
+      code: 201,
+      message: 'Clase registrada con éxito.',
+      new_class: classWithTopic,
+    }
+  }
+
+  return {
+    code: 400,
+    message: 'No se pudo registrar la clase. Intente de nuevo.',
+  }
 }
 
 export default registerClass

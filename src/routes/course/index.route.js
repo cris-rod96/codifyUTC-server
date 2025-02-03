@@ -13,7 +13,18 @@ courseRouter.get('/all', courseController.getAllCourses)
 courseRouter.get('/deleted', courseController.getAllDeletedCourses)
 courseRouter.get('/teacher/:teacher_id', courseController.getByTeacher)
 courseRouter.get('/search', courseController.getByKey)
-courseRouter.put('/:id', courseController.updateCourse)
+
+courseRouter.put(
+  '/with-image/:id',
+  multerHelper.upload.single('poster'),
+  courseController.updateWithImage
+)
+courseRouter.put(
+  '/withouth-image/:id',
+  multerHelper.upload.none(),
+  courseController.updateCourse
+)
+
 courseRouter.delete('/:id', courseController.deleteCourse)
 
 // Obtener todos los cursos con sus estudiantes

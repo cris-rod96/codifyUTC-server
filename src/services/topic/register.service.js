@@ -33,11 +33,10 @@ const registerTopic = async (data) => {
 
     if (!title || !content || !ClassId) {
       results.push({
-        data: topicData,
         success: false,
         message: 'Datos incompletos. Faltan propiedades necesarias.',
+        data: topicData,
       })
-
       continue
     }
 
@@ -46,11 +45,10 @@ const registerTopic = async (data) => {
 
     if (!classFound) {
       results.push({
-        data: topicData,
         success: false,
         message: `Clase con id ${ClassId} no encontrada o eliminada.`,
+        data: topicData,
       })
-
       continue
     }
 
@@ -58,9 +56,9 @@ const registerTopic = async (data) => {
     const topicFound = await topicExists(title, ClassId)
     if (topicFound) {
       results.push({
-        data: topicData,
         success: false,
         message: `Ya existe un tema con el mismo nombre en esta clase.`,
+        data: topicData,
       })
       continue
     }
@@ -68,20 +66,22 @@ const registerTopic = async (data) => {
     // Crear el tema
     const topic = await Topic.create(topicData)
     results.push({
-      data: topic,
       success: true,
       message: 'Tema registrado con éxito.',
+      data: topic, // Aquí se guarda el objeto creado
     })
   }
 
-  //  Verificar si hubo al menos un tema creado con éxito
-  const successful = results.filter((result) => result.success)
+  // Obtener solo los Topics creados con éxito
+  const successfulTopics = results
+    .filter((result) => result.success)
+    .map((result) => result.data)
 
-  if (successful.length > 0) {
+  if (successfulTopics.length > 0) {
     return {
       code: 201,
-      message: 'Se registrador algunos temas con éxito.',
-      results,
+      message: 'Se registraron algunos temas con éxito.',
+      topics: successfulTopics, // Retorna solo los topics creados
     }
   }
   return {
