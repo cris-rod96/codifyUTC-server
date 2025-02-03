@@ -25,6 +25,7 @@ const {
   User,
   Code,
   QuizzResponse,
+  LightningResponse,
 } = sequelize.models
 
 User.hasMany(Course, { foreignKey: 'TeacherId', as: 'CourseTaught' })
@@ -71,10 +72,18 @@ QuestionQuizz.hasMany(OptionQuizz, {
 })
 OptionQuizz.belongsTo(QuestionQuizz, { foreignKey: 'QuestionQuizzId' })
 
-Activity.hasMany(QuestionFlash, { foreignKey: 'ActivityId' })
+Activity.hasMany(QuestionFlash, {
+  foreignKey: 'ActivityId',
+  onDelete: 'CASCADE',
+  as: 'QuestionsLightning',
+})
 QuestionFlash.belongsTo(Activity, { foreignKey: 'ActivityId' })
 
-QuestionFlash.hasMany(OptionFlash, { foreignKey: 'QuestionFlashId' })
+QuestionFlash.hasMany(OptionFlash, {
+  foreignKey: 'QuestionFlashId',
+  onDelete: 'CASCADE',
+  as: 'OptionsLightning',
+})
 OptionFlash.belongsTo(QuestionFlash, { foreignKey: 'QuestionFlashId' })
 
 Activity.hasMany(OutputBattle, { foreignKey: 'ActivityId' })
@@ -94,6 +103,9 @@ Response.belongsTo(Activity, { foreignKey: 'ActivityId' })
 
 Response.hasMany(QuizzResponse, { foreignKey: 'ResponseId' })
 QuizzResponse.belongsTo(Response, { foreignKey: 'ResponseId' })
+
+Response.hasMany(LightningResponse, { foreignKey: 'ResponseId' })
+LightningResponse.belongsTo(Response, { foreignKey: 'ResponseId' })
 
 User.hasMany(Score, { foreignKey: 'StudentId' })
 Score.belongsTo(User, { foreignKey: 'StudentId' })
@@ -119,6 +131,7 @@ export {
   QuestionQuizz,
   Response,
   QuizzResponse,
+  LightningResponse,
   Score,
   Support,
   Topic,

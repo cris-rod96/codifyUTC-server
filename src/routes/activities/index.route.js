@@ -24,6 +24,7 @@ activityRouter.post(
 activityRouter.get('/class/:class_id', activityController.getByClass)
 activityRouter.get('/teacher/:user_id', activityController.getByTeacher)
 activityRouter.get('/:id', activityController.getById)
+activityRouter.get('/lightning/:id', activityController.getLightningByID)
 
 activityRouter.delete('/:activity_id', activityController.deleteActivity)
 activityRouter.put('/:activity_id', activityController.updateActivity)

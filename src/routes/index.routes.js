@@ -18,6 +18,7 @@ import codeRouter from './code/index.route.js'
 import recoveryRouter from './recovery/index.route.js'
 import activityRouter from './activities/index.route.js'
 import quizzResponseRouter from './quizz-response/index.route.js'
+import lightningResponseRouter from './lightning-response/index.route.js'
 const rootRouter = Router()
 
 rootRouter.use('/activities', activityRouter)
@@ -39,4 +40,5 @@ rootRouter.use('/question-quizz', questionQuizzRouter)
 rootRouter.use('/scores', scoreRouter)
 rootRouter.use('/recover', recoveryRouter)
 rootRouter.use('/quizz-response', quizzResponseRouter)
+rootRouter.use('/lightning-response', lightningResponseRouter)
 export default rootRouter

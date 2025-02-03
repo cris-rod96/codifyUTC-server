@@ -1,4 +1,9 @@
-import { getByClass, getByTeacher, getById } from './list.controller.js'
+import {
+  getByClass,
+  getByTeacher,
+  getById,
+  getLightningByID,
+} from './list.controller.js'
 import {
   createActivity,
   createLightningActivity,
@@ -9,6 +14,7 @@ import updateActivity from './update.controller.js'
 export default {
   deleteActivity,
   getByClass,
+  getLightningByID,
   getById,
   getByTeacher,
   createActivity,

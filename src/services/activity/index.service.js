@@ -5,6 +5,7 @@ import {
   getByID,
   getByKey,
   getByTeacher,
+  getLightningByID,
 } from './list.service.js'
 import updateActivity from './update.service.js'
 import deleteActivity from './delete.service.js'
@@ -18,4 +19,5 @@ export default {
   getByTeacher,
   registerActivity,
   updateActivity,
+  getLightningByID,
 }

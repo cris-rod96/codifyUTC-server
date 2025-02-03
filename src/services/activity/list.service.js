@@ -2,7 +2,9 @@ import {
   Activity,
   Class,
   Course,
+  OptionFlash,
   OptionQuizz,
+  QuestionFlash,
   QuestionQuizz,
 } from '../../database/index.database.js'
 
@@ -26,6 +28,34 @@ const getByID = async (id) => {
           {
             model: OptionQuizz,
             as: 'Options',
+          },
+        ],
+      },
+    ],
+  })
+
+  return activity
+    ? {
+        code: 200,
+        activity,
+      }
+    : {
+        code: 404,
+        message: 'Actividad no disponible. Intente de nuevo.',
+      }
+}
+
+const getLightningByID = async (id) => {
+  const activity = await Activity.findOne({
+    where: { id },
+    include: [
+      {
+        model: QuestionFlash,
+        as: 'QuestionsLightning',
+        include: [
+          {
+            model: OptionFlash,
+            as: 'OptionsLightning',
           },
         ],
       },
@@ -81,4 +111,11 @@ const getByTeacher = async (TeacherId) => {
     : { code: 400, message: 'No se pudo obtener las actividades' }
 }
 
-export { getAllActivities, getByID, getByTeacher, getByClass, getByKey }
+export {
+  getAllActivities,
+  getByID,
+  getByTeacher,
+  getByClass,
+  getByKey,
+  getLightningByID,
+}

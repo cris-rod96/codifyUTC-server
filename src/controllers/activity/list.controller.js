@@ -40,4 +40,19 @@ const getByTeacher = async (req, res) => {
   }
 }
 
-export { getByClass, getByTeacher, getById }
+const getLightningByID = async (req, res) => {
+  try {
+    const { id } = req.params
+    const { code, activity, message } = await activityService.getLightningByID(
+      id
+    )
+    return res.status(code).json(message ? { message } : { activity })
+  } catch (error) {
+    console.log(error.message)
+    return res.status(500).json({
+      message: 'Error interno. Verifique los datos e intente de nuevo.',
+    })
+  }
+}
+
+export { getByClass, getByTeacher, getById, getLightningByID }

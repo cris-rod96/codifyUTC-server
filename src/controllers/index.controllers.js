@@ -18,7 +18,7 @@ import codeController from './code/index.controller.js'
 import scoreController from './score/index.controller.js'
 import recoveryController from './recovery/index.controller.js'
 import quizzResponseController from './quizz-response/index.controller.js'
-
+import lightningResponseController from './lightning-response/index.controller.js'
 export {
   activityController,
   authController,
@@ -40,4 +40,5 @@ export {
   userController,
   recoveryController,
   quizzResponseController,
+  lightningResponseController,
 }

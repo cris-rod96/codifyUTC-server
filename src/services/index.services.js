@@ -18,6 +18,7 @@ import questionQuizzService from './question-quizz/index.service.js'
 import codeService from './code/index.service.js'
 import recoveryService from './recovery/index.service.js'
 import quizzResponseService from './quizz-response/index.service.js'
+import lightningResponseService from './lightning-response/index.service.js'
 
 export {
   activityService,
@@ -40,4 +41,5 @@ export {
   userService,
   recoveryService,
   quizzResponseService,
+  lightningResponseService,
 }
