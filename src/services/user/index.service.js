@@ -1,5 +1,6 @@
 import deleteUser from './delete.service.js'
 import {
+  getAll,
   getAllUsers,
   getUserByKey,
   getUsersByActive,
@@ -8,10 +9,16 @@ import {
   verfyUser,
 } from './list.service.js'
 import registerUser from './register.service.js'
-import { updateUser, changePassword, newPassword } from './update.service.js'
+import {
+  updateUser,
+  changePassword,
+  newPassword,
+  updateRole,
+} from './update.service.js'
 
 export default {
   deleteUser,
+  getAll,
   getAllUsers,
   getUserByKey,
   getUsersByActive,
@@ -22,4 +29,5 @@ export default {
   verfyUser,
   changePassword,
   newPassword,
+  updateRole,
 }

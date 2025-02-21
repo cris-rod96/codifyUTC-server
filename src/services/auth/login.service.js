@@ -15,11 +15,18 @@ const login = async (email, password) => {
   if (!user)
     return {
       code: 401,
-      message: 'Credenciales incorrectas. Usuario no encontrado',
+      message: 'Acceso denegado. Usuario no encontrado.',
     }
 
   if (!user.isActive)
-    return { code: 401, message: 'Ingreso incorrecto. Activa tu cuenta.' }
+    return { code: 401, message: 'Acceso denegado. Activa tu cuenta.' }
+
+  if (!user.role) {
+    return {
+      code: 401,
+      message: 'Acceso denegado. Rol no asignado.',
+    }
+  }
 
   const isValidPassword = await bcryptUtl.comparePassword(
     password,
@@ -27,7 +34,7 @@ const login = async (email, password) => {
   )
 
   if (!isValidPassword)
-    return { code: 401, message: 'Credenciales Incorrectas. Intente de nuevo.' }
+    return { code: 401, message: 'Acceso denegado. Credenciales incorrectas.' }
 
   const token = jwtUtl.generateToken({
     id: user.id,

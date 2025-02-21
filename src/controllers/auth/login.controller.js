@@ -7,17 +7,17 @@ const login = async (req, res) => {
 
     const { code, message, token, user } = await authService.login(
       email,
-      password,
+      password
     )
 
-    // if (code === 200) {
-    //   nodemailerHelper.loginNotification(
-    //     email,
-    //     user.full_name,
-    //     loginLocation.ip,
-    //     loginLocation.city,
-    //   )
-    // }
+    if (code === 200) {
+      nodemailerHelper.loginNotification(
+        email,
+        user.full_name,
+        loginLocation.ip,
+        loginLocation.city
+      )
+    }
 
     return res.status(code).json(message ? { message } : { token, user })
   } catch (error) {

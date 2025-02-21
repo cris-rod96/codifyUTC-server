@@ -53,11 +53,13 @@ const CourseModel = (sequelize) => {
 
       TeacherId: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: 'Users',
           key: 'id',
         },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
       },
       access_code: {
         type: DataTypes.STRING,

@@ -45,7 +45,7 @@ const requestCode = async (email) => {
       message: 'Código enviado al correo electrónico',
       userData: {
         email: userFound.email,
-        fullName: userFound.full_name,
+        full_name: userFound.full_name,
       },
     }
   }

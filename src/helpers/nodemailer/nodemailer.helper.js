@@ -86,6 +86,27 @@ const bannedStudent = (to, student_name, course_name, teacher_name, reason) => {
   send(to, file, 'Codify-UTC - Notificación Baneo')
 }
 
+const rolAssigned = (to, name, role) => {
+  const pathname = generatePathName('rol-assigned')
+  const file = fs
+    .readFileSync(pathname, { encoding: 'utf-8' })
+    .toString()
+    .replace('${name}', name)
+    .replace('${role}', role)
+  send(to, file, 'Notificación de Asignación de Rol - Codify UTC')
+}
+
+const courseAssigned = (to, teacherName, courseName, courseCode) => {
+  const pathname = generatePathName('course-assigned')
+  const file = fs
+    .readFileSync(pathname, { encoding: 'utf-8' })
+    .toString()
+    .replace('${teacherName}', teacherName)
+    .replace('${courseName}', courseName)
+    .replace('${courseCode}', courseCode)
+    .send(to, file, 'Notificación de Asignación de Curso - Codify UTC')
+}
+
 export default {
   recoveryPassword,
   welcome,
@@ -94,4 +115,6 @@ export default {
   loginNotification,
   resendCode,
   bannedStudent,
+  rolAssigned,
+  courseAssigned,
 }

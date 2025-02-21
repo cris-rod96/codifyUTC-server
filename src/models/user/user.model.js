@@ -69,7 +69,8 @@ const UserModel = (sequelize) => {
       role: {
         type: DataTypes.ENUM,
         values: ['Administrador', 'Docente', 'Estudiante'],
-        defaultValue: 'Estudiante',
+        allowNull: true,
+        defaultValue: null,
       },
 
       isActive: {

@@ -77,4 +77,20 @@ const changePassword = async (data) => {
   return { code: 200, message: 'Contraseña cambiada con éxito.' }
 }
 
-export { updateUser, changePassword, newPassword }
+const updateRole = async (user_id, role) => {
+  const user = await User.findOne({
+    where: {
+      id: user_id,
+    },
+  })
+
+  if (!user) {
+    return { code: 401, message: 'Usuario no encontrado' }
+  }
+
+  user.role = role
+  await user.save()
+  return { code: 200, message: 'Rol asignado correctamente.', user }
+}
+
+export { updateUser, changePassword, newPassword, updateRole }

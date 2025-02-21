@@ -65,6 +65,7 @@ const registerTopic = async (data) => {
 
     // Crear el tema
     const topic = await Topic.create(topicData)
+    console.log(topic)
     results.push({
       success: true,
       message: 'Tema registrado con éxito.',

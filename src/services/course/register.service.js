@@ -16,10 +16,10 @@ const existTeacher = async (TeacherId) => {
 const registerCourse = async (data) => {
   const { TeacherId } = data
 
-  console.log(data)
-
-  if (!existTeacher(TeacherId))
-    return { code: 400, message: 'Docente no disponible. Intente de nuevo.' }
+  if (TeacherId) {
+    if (!existTeacher(TeacherId))
+      return { code: 400, message: 'Docente no disponible. Intente de nuevo.' }
+  }
 
   const course = await Course.create(data)
 

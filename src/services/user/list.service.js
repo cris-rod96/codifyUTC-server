@@ -1,6 +1,12 @@
 import { Op } from 'sequelize'
 import { User } from '../../database/index.database.js'
 
+const getAll = async () => {
+  const users = await User.findAll({})
+
+  return { code: 200, users }
+}
+
 const getAllUsers = async () => {
   const users = await User.findAll({
     where: {
@@ -64,6 +70,7 @@ const verfyUser = async (email, nick_name) => {
 }
 
 export {
+  getAll,
   getAllUsers,
   getUserByKey,
   getUsersByActive,

@@ -1,5 +1,16 @@
 import { userService } from '../../services/index.services.js'
 
+const getAll = async (req, res) => {
+  try {
+    const { code, users } = await userService.getAll()
+    return res.status(code).json({ users })
+  } catch (error) {
+    return res.status(500).json({
+      message: `Error interno. Verifique los datos e intente de nuevo.`,
+    })
+  }
+}
+
 const getAllUsers = async (req, res) => {
   try {
     const { code, users } = await userService.getAllUsers()
@@ -67,6 +78,7 @@ const verfyUser = async (req, res) => {
 }
 
 export {
+  getAll,
   getAllUsers,
   getUserByKey,
   getUsersByActive,

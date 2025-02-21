@@ -18,6 +18,22 @@ const teacherExists = async (TeacherId) => {
   return teacher
 }
 
+const getCourses = async () => {
+  const courses = await Course.findAll({
+    where: {
+      isDeleted: false,
+    },
+    include: [
+      {
+        model: User,
+        as: 'Teacher',
+      },
+    ],
+  })
+
+  return { code: 200, courses }
+}
+
 const getAllCourses = async () => {
   const courses = await Course.findAll({})
 
@@ -40,6 +56,7 @@ const getByTeacher = async (TeacherId) => {
       {
         model: Class,
         as: 'Classes',
+
         include: [
           {
             model: Topic,
@@ -92,6 +109,7 @@ const getAllCoursesWithStudents = async () => {
 }
 
 export {
+  getCourses,
   getAllCourses,
   getAllDeletedCourses,
   getByTeacher,

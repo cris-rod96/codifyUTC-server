@@ -24,6 +24,7 @@ const resendCode = async (req, res) => {
         twilioHelper.sendMessage(value, newCode, 'recovery')
       }
     }
+    return res.status(code).json({ message })
   } catch (error) {
     return res.status(500).json({
       message: 'Error interno en el servidor. Verifique e intente de nuevo.',

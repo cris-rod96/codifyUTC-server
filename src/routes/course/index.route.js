@@ -1,14 +1,19 @@
 import { Router } from 'express'
 import { courseController } from '../../controllers/index.controllers.js'
 import { multerHelper } from '../../helpers/index.helpers.js'
+import { jwtMiddleware } from '../../middlewares/index.middlewares.js'
 
 const courseRouter = Router()
 
 courseRouter.post(
   '/',
+  jwtMiddleware.validateToken,
   multerHelper.upload.single('poster'),
   courseController.registerCourse
 )
+
+courseRouter.get('/', jwtMiddleware.validateToken, courseController.getCourses)
+
 courseRouter.get('/all', courseController.getAllCourses)
 courseRouter.get('/deleted', courseController.getAllDeletedCourses)
 courseRouter.get('/teacher/:teacher_id', courseController.getByTeacher)
@@ -25,7 +30,11 @@ courseRouter.put(
   courseController.updateCourse
 )
 
-courseRouter.delete('/:id', courseController.deleteCourse)
+courseRouter.delete(
+  '/:id',
+  jwtMiddleware.validateToken,
+  courseController.deleteCourse
+)
 
 // Obtener todos los cursos con sus estudiantes
 courseRouter.get('/with_students', courseController.getAllCoursesWithStudents)

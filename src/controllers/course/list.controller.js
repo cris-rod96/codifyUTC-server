@@ -1,5 +1,16 @@
 import { courseService } from '../../services/index.services.js'
 
+const getCourses = async (req, res) => {
+  try {
+    const { code, courses } = await courseService.getCourses()
+    return res.status(code).json({ courses })
+  } catch (error) {
+    return res.status(500).json({
+      message: 'Error interno. Verifique los datos e intente de nuevo.',
+    })
+  }
+}
+
 const getAllCourses = async (req, res) => {
   try {
     const { code, courses } = await courseService.getAllCourses()
@@ -65,6 +76,7 @@ const getAllCoursesWithStudents = async (req, res) => {
 }
 
 export {
+  getCourses,
   getAllCourses,
   getAllDeletedCourses,
   getByTeacher,

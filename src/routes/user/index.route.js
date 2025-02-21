@@ -1,7 +1,10 @@
 import { Router } from 'express'
 import { userController } from '../../controllers/index.controllers.js'
 import { multerHelper } from '../../helpers/index.helpers.js'
+import { jwtMiddleware } from '../../middlewares/index.middlewares.js'
 const userRouter = Router()
+
+userRouter.get('/', jwtMiddleware.validateToken, userController.getAll)
 
 userRouter.post(
   '/',
@@ -22,5 +25,11 @@ userRouter.patch(
 )
 
 userRouter.patch('/new-password/:user_id', userController.newPassword)
+
+userRouter.put(
+  '/updateRole',
+  jwtMiddleware.validateToken,
+  userController.updateRole
+)
 
 export default userRouter
