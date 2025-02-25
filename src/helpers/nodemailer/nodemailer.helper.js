@@ -104,7 +104,7 @@ const courseAssigned = (to, teacherName, courseName, courseCode) => {
     .replace('${teacherName}', teacherName)
     .replace('${courseName}', courseName)
     .replace('${courseCode}', courseCode)
-    .send(to, file, 'Notificación de Asignación de Curso - Codify UTC')
+  send(to, file, 'Notificación de Asignación de Curso - Codify UTC')
 }
 
 export default {
