@@ -4,7 +4,7 @@ import { sequelize } from './src/database/index.database.js'
 import loader from './src/scripts/seed.js'
 
 sequelize
-  .sync({ logging: false, force: true, alter: true })
+  .sync({ logging: false, force: false, alter: true })
   .then(() => {
     console.log(`Base de datos conectada en modo ${NODE_ENV} correctamente.`)
     server.listen(PORT, () => {
